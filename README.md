@@ -1,5 +1,7 @@
 # chinese-holidays
 
+提供具有中国特色的休假安排或者工作日查询。
+
 ### Install
 
     npm install chinese-holidays
