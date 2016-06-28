@@ -29,3 +29,7 @@ ChineseHolidays.all().forEach(function(holiday){
 // ["2016-01-01", "2016-01-02", "2016-01-03"]
 // ...
 ```
+
+### License
+
+The package is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
