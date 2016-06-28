@@ -22,6 +22,14 @@ var rangeToDates = function(startDate, endDate) {
   return dates;
 };
 
+Days.prototype.isHoliday = function() {
+  return this.type == 'holiday';
+}
+
+Days.prototype.isWorkingday = function() {
+  return this.type == 'workdingday';
+}
+
 Days.prototype.days = function() {
   var startDate = null;
   startDate = moment(this.range[0]);
