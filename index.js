@@ -1,5 +1,6 @@
 var fs = require('fs');
 var moment = require('moment');
+var path = require('path');
 var Days = require('./days');
 
 var ChineseHolidays = {
@@ -59,9 +60,10 @@ var ChineseHolidays = {
     return moment(date).format('YYYY-MM-DD');
   },
   _loadEvents: function() {
-    var files = fs.readdirSync('./data');
+    var dataDirectory = path.resolve(__dirname, './data');
+    var files = fs.readdirSync(dataDirectory);
     var eventsOfYears = files.map(function(file) {
-      var elements = JSON.parse(fs.readFileSync('./data/' + file, 'utf8'));
+      var elements = JSON.parse(fs.readFileSync(path.resolve(dataDirectory, file), 'utf8'));
       return elements.map(function(ele) {
         return new Days(ele.name, ele.range, ele.type);
       })
