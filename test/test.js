@@ -4,7 +4,7 @@ var should = require('should');
 
 describe('ChineseHolidays', function() {
   it('all', function() {
-    console.log(ChineseHolidays.all());
+    ChineseHolidays.all();
   })
 
   it('isHoliday', function() {
@@ -26,7 +26,7 @@ describe('ChineseHolidays', function() {
   })
 
   it('loadEvents', function() {
-    should.equal(ChineseHolidays._loadEvents().length, 12)
+    should.equal(ChineseHolidays._loadEvents().length, 23)
 
     days = ChineseHolidays._loadEvents()[0].days()
     should.equal(days.length, 3);
