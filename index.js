@@ -54,7 +54,7 @@ var ChineseHolidays = {
   },
   isWeekend: function(date) {
     var day = moment(date).day()
-    return day == 6 || day == 0;
+    return day === 6 || day === 0;
   },
   _key: function(date){
     return moment(date).format('YYYY-MM-DD');

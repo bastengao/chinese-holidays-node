@@ -23,19 +23,19 @@ var rangeToDates = function(startDate, endDate) {
 };
 
 Days.prototype.isHoliday = function() {
-  return this.type == 'holiday';
+  return this.type === 'holiday';
 }
 
 Days.prototype.isWorkingday = function() {
-  return this.type == 'workdingday';
+  return this.type === 'workdingday';
 }
 
 Days.prototype.days = function() {
   var startDate = null;
   startDate = moment(this.range[0]);
-  if(this.range.length == 1) {
+  if(this.range.length === 1) {
     return [startDate.toDate()];
-  } else if (this.range.length == 2) {
+  } else if (this.range.length === 2) {
     endDate = moment(this.range[1]);
     return rangeToDates(startDate, endDate);
   }
