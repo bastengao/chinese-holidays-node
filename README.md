@@ -35,6 +35,7 @@ ChineseHolidays.all().forEach(function(holiday){
 
 ### Support
 
+* [支持 2018 年](http://www.gov.cn/zhengce/content/2017-11/30/content_5243579.htm)
 * [支持 2017 年](http://www.gov.cn/zhengce/content/2016-12/01/content_5141603.htm)
 * 支持 2016 年
 
