@@ -26,7 +26,7 @@ describe('ChineseHolidays', function() {
   })
 
   it('loadEvents', function() {
-    should.equal(ChineseHolidays._loadEvents().length, 23)
+    should.equal(ChineseHolidays._loadEvents().length, 35)
 
     days = ChineseHolidays._loadEvents()[0].days()
     should.equal(days.length, 3);
