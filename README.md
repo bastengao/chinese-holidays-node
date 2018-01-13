@@ -23,7 +23,7 @@ ChineseHolidays.isWorkingday(元旦)
 // fase
 
 
-// 列出已知的特殊节假日
+// 列出已知的节假日
 ChineseHolidays.all().forEach(function(holiday){
   console.log(holiday.name)
   console.log(holiday.days().map(function(date) { return moment(date).format('YYYY-MM-DD') }))
@@ -31,6 +31,11 @@ ChineseHolidays.all().forEach(function(holiday){
 // 元旦
 // ["2016-01-01", "2016-01-02", "2016-01-03"]
 // ...
+
+// 列出所有的特殊日子(节假日和调休)
+ChineseHolidas.events().forEach(function(event){
+  console.log(event.name, event.days(), event.isHoliday(), event.isWorkingday())
+})
 ```
 
 ### Support
