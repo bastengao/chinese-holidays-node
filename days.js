@@ -27,7 +27,7 @@ Days.prototype.isHoliday = function() {
 }
 
 Days.prototype.isWorkingday = function() {
-  return this.type === 'workdingday';
+  return this.type === 'workingday';
 }
 
 Days.prototype.days = function() {
