@@ -6,6 +6,8 @@
   "files": [
     "index.js",
     "days.js",
+    "bundled.js",
+    "cache.js",
     "data"
   ],
   "scripts": {
@@ -30,6 +32,9 @@
     "should": "^9.0.2"
   },
   "dependencies": {
-    "moment": "^2.13.0"
+    "lodash": "^4.17.4",
+    "moment": "^2.13.0",
+    "request": "^2.83.0",
+    "request-promise-native": "^1.0.5"
   }
 }
