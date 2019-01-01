@@ -12,9 +12,16 @@ var Bundled = {
 
   _loadEvents: function () {
     var dataDirectory = path.resolve(__dirname, './data');
-    var files = fs.readdirSync(dataDirectory);
+    return this.loadEventsFromDir(dataDirectory)
+  },
+
+  loadEventsFromDir: function(dir) {
+    var files = fs.readdirSync(dir);
+    files = files.filter(function(file) {
+      return file != "index.json"
+    })
     var eventsOfYears = files.map(function (file) {
-      var elements = JSON.parse(fs.readFileSync(path.resolve(dataDirectory, file), 'utf8'));
+      var elements = JSON.parse(fs.readFileSync(path.resolve(dir, file), 'utf8'));
       return elements.map(function (ele) {
         return new Days(ele.name, ele.range, ele.type);
       })
@@ -26,7 +33,7 @@ var Bundled = {
     })
 
     return events;
-  },
+  }
 }
 
 module.exports = Bundled
