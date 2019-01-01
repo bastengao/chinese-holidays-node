@@ -28,13 +28,13 @@
   },
   "homepage": "https://github.com/bastengao/chinese-holidays-node#readme",
   "devDependencies": {
-    "mocha": "^2.5.3",
+    "mocha": "^5.2.0",
     "should": "^9.0.2"
   },
   "dependencies": {
-    "lodash": "^4.17.4",
-    "moment": "^2.13.0",
-    "request": "^2.83.0",
+    "lodash": "^4.17.5",
+    "moment": "^2.19.3",
+    "request": "^2.88.0",
     "request-promise-native": "^1.0.5"
   }
 }
