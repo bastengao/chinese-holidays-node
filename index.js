@@ -31,7 +31,7 @@ var ChineseHolidays = {
     // } else {
     // }
 
-    // priority: oneline data => offline data => bundled data
+    // priority: online data => offline data => bundled data
 
     if (_isFunction(cb)) {
       Cache.events().then(function(events){

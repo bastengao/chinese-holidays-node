@@ -2,16 +2,20 @@ var fs = require('fs');
 var path = require('path');
 var request = require('request');
 var rq = require('request-promise-native');
+var Days = require('./days');
 
 var DataEndpoint = 'http://bastengao.coding.me/chinese-holidays-data/data';
 var IndexUrl = DataEndpoint + '/index.json';
 
+// TODO: check is up to date
 var Cache = {
+  verbose: false,
   events: function () {
     return this.loadEventsFromRemote()
   },
 
   loadEventsFromRemote: function () {
+    var self = this
     var cacheDir = path.resolve(__dirname, './cache')
     if (!fs.statSync(cacheDir)) {
       fs.mkdirSync(cacheDir);
@@ -19,11 +23,15 @@ var Cache = {
     
     // TODO: load offline data when fetch failed
     return new Promise(function (resolve, reject) {
-      console.log('loading data from ' + IndexUrl)
+      if(self.verbose) {
+        console.log('loading data from ' + IndexUrl)
+      }
 
       request(IndexUrl, function (error, response, body) {
         if (error) {
-          console.log('load failed: ' + error)
+          if(self.verbose) {
+            console.log('load failed: ' + error)
+          }
           reject(error)
           return
         }
@@ -36,7 +44,9 @@ var Cache = {
 
         var promises = entries.map(function (entry) {
           var url = DataEndpoint + '/' + entry['year'] + '.json'
-          console.log('loading data from ' + url)
+          if(self.verbose) {
+            console.log('loading data from ' + url)
+          }
           var p = rq({ uri: url, json: true })
 
           p.then(function(values){
@@ -49,7 +59,10 @@ var Cache = {
 
         Promise.all(promises).then(function (values) {
           var events = []
-          values.forEach(function(eventsOfYear) {
+          values.forEach(function(valuesOfYear) {
+            var eventsOfYear = valuesOfYear.map(function (ele) {
+              return new Days(ele.name, ele.range, ele.type);
+            })
             events = events.concat(eventsOfYear)
           })
           resolve(events)
