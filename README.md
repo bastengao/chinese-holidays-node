@@ -9,7 +9,7 @@
 
 ### Usage
 
-v0.4.0 支持最新的 2019 年离线数据，请看 v0.4.0 [使用教程](https://github.com/bastengao/chinese-holidays-node/tree/v0.4.0)
+v0.4.1 支持最新的 2019 年离线数据，请看 v0.4.1 [使用教程](https://github.com/bastengao/chinese-holidays-node/tree/v0.4.1)
 
 
 ```javascript
@@ -22,7 +22,7 @@ ChineseHolidays.ready(function(book, err){
 
   元旦 = new Date(2016, 0, 1)
   // 是否休假(含正常的周六、周日)
-  book.isHoliday(元旦)     
+  book.isHoliday(元旦)
   // true
 
   // 是否是工作日(含节假日的调休)
