@@ -4,7 +4,7 @@ var should = require('should');
 
 describe('Bundled', function() {
   it('loadEvents', function() {
-    should.equal(Bundled._loadEvents().length, 46)
+    should.equal(Bundled._loadEvents().length, 48)
 
     days = Bundled._loadEvents()[0].days()
     should.equal(days.length, 3);
