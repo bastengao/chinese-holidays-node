@@ -1,6 +1,6 @@
-# v1.0.0 (WIP)
+# v1.0.0
 
-Support online update and cache offline data.
+Support online update data and cache offline data.
 
 # v0.4.1
 
