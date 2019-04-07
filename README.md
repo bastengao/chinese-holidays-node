@@ -44,6 +44,11 @@ ChineseHolidays.ready(function(book, err){
     console.log(event.name, event.days(), event.isHoliday(), event.isWorkingday())
   })
 })
+
+// Or return promise
+ChineseHolidays.ready().then(function(book) {
+  book.isHoliday(date)
+})
 ```
 
 ### Support
