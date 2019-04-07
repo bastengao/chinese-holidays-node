@@ -11,6 +11,8 @@ var IndexUrl = DataEndpoint + '/index.json';
 var CacheDir = path.resolve(__dirname, './cache')
 var NewCacheDir = path.resolve(__dirname, './cache_temp')
 
+// TODO: checkUpdateInterval 检查更新周期
+
 // 1. check index file changed
 // 2. down load index and data file to new cache dir
 // 3. check file syntax
@@ -30,7 +32,7 @@ var Cache = {
     if (!fs.existsSync(NewCacheDir)) {
       fs.mkdirSync(NewCacheDir);
     }
-    
+
     return new Promise(function (resolve, reject) {
       if(self.verbose) {
         console.log('loading data from ' + IndexUrl)

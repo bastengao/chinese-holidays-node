@@ -5,8 +5,6 @@ var Book = require('./book')
 var Bundled = require('./bundled')
 var Cache = require('./cache')
 
-// TODO: checkUpdateInterval 检查更新周期
-
 /*
 ChineseHolidays.ready(function(book){
   book.isHoliday(date)
@@ -24,13 +22,7 @@ async function example() {
 
 
 var ChineseHolidays = {
-  // ready([opt], [cb])
   ready: function(cb) {
-    // if (arguments.legnth > 0 && _isFunction(arguments[arguments.length -1])){
-    //   // callback way
-    // } else {
-    // }
-
     // priority: online data => offline data => bundled data
 
     if (_isFunction(cb)) {
