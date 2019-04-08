@@ -1,3 +1,7 @@
+# v1.0.1
+
+Fix npm pacakge files
+
 # v1.0.0
 
 Support online update data and cache offline data.

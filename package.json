@@ -1,11 +1,12 @@
 {
   "name": "chinese-holidays",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Chinese holidays",
   "main": "index.js",
   "files": [
     "index.js",
     "days.js",
+    "book.js",
     "bundled.js",
     "cache.js",
     "data"
