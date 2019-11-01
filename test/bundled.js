@@ -2,8 +2,8 @@ const Bundled = require('../lib/bundled')
 
 const should = require('should');
 
-describe('Bundled', function() {
-  it('loadEvents', function() {
+describe('Bundled', () => {
+  it('loadEvents', () => {
     should.equal(Bundled._loadEvents().length, 48)
 
     const days = Bundled._loadEvents()[0].days()

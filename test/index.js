@@ -3,39 +3,39 @@ const ChineseHolidays = require('../lib');
 const should = require('should');
 
 describe('ChineseHolidays', function() {
-  it('ready', function() {
-    ChineseHolidays.ready(function(book){
+  it('ready', () => {
+    ChineseHolidays.ready((book) => {
       (book).should.not.be.null()
     })
 
-    ChineseHolidays.ready().then(function(book){
+    ChineseHolidays.ready().then((book) => {
       (book).should.not.be.null()
     })
   })
 
-  it('all', function() {
-    ChineseHolidays.ready(function(book){
+  it('all', () => {
+    ChineseHolidays.ready((book) => {
       book.all();
     })
   })
 
-  it('isHoliday', function() {
-    ChineseHolidays.ready(function(book){
+  it('isHoliday', () => {
+    ChineseHolidays.ready((book) => {
       should.equal(book.isHoliday(new Date(2016, 0, 1)), true);
       should.equal(book.isHoliday(new Date(2016, 0, 5)), false);
     })
   })
 
-  it('isWorkingday', function() {
-    ChineseHolidays.ready(function(book){
+  it('isWorkingday', () => {
+    ChineseHolidays.ready((book) => {
       should.equal(book.isWorkingday(new Date(2016, 0, 1)), false);
       should.equal(book.isWorkingday(new Date(2016, 0, 5)), true);
     })
   })
 
-  it('events', function() {
-    ChineseHolidays.ready(function(book){
+  it('events', () => {
+    ChineseHolidays.ready((book) => {
       book.events();
     })
   })
-})
+});
