@@ -50,8 +50,8 @@ describe('books', () => {
 
   it('isWeekend', () => {
     const book = new Book(events);
-    should.equal(book.isWeekend('2018-12-29'), true);
-    should.equal(book.isWeekend('2018-12-30'), true);
-    should.equal(book.isWeekend('2018-12-31'), false);
+    should.equal(Book.isWeekend('2018-12-29'), true);
+    should.equal(Book.isWeekend('2018-12-30'), true);
+    should.equal(Book.isWeekend('2018-12-31'), false);
   });
 });
