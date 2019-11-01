@@ -1,10 +1,4 @@
-const moment = require('moment')
-
-function Days(name, range, type) {
-  this.name = name;
-  this.range = range;
-  this.type = type;
-}
+const moment = require('moment');
 
 const rangeToDates = function (startDate, endDate) {
   const dates = [startDate.toDate()];
@@ -22,23 +16,35 @@ const rangeToDates = function (startDate, endDate) {
   return dates;
 };
 
-Days.prototype.isHoliday = function () {
-  return this.type === 'holiday';
-};
-
-Days.prototype.isWorkingday = function () {
-  return this.type === 'workingday';
-};
-
-Days.prototype.days = function () {
-  let startDate = null;
-  startDate = moment(this.range[0]);
-  if (this.range.length === 1) {
-    return [startDate.toDate()];
-  } else if (this.range.length === 2) {
-    const endDate = moment(this.range[1]);
-    return rangeToDates(startDate, endDate);
+class Days {
+  constructor(name, range, type) {
+    this.name = name;
+    this.range = range;
+    this.type = type;
   }
-};
+
+  isHoliday() {
+    return this.type === 'holiday';
+  }
+
+  isWorkingday() {
+    return this.type === 'workingday';
+  }
+
+  days() {
+    let startDate = null;
+    startDate = moment(this.range[0]);
+    if (this.range.length === 1) {
+      return [startDate.toDate()];
+    }
+    if (this.range.length === 2) {
+      const endDate = moment(this.range[1]);
+      return rangeToDates(startDate, endDate);
+    }
+
+    // TODO: handel exception
+    return [];
+  }
+}
 
 module.exports = Days;
