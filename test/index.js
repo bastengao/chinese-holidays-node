@@ -1,8 +1,6 @@
-var ChineseHolidays = require('../lib');
-var Book = require('../lib/book')
-var Bundled = require('../lib/bundled')
+const ChineseHolidays = require('../lib');
 
-var should = require('should');
+const should = require('should');
 
 describe('ChineseHolidays', function() {
   it('ready', function() {

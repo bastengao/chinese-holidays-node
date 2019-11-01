@@ -1,7 +1,5 @@
-var Cache = require('../lib/cache');
-var Days = require('../lib/days');
-
-var should = require('should');
+const Cache = require('../lib/cache');
+const Days = require('../lib/days');
 
 describe('Cache', function() {
   it('loadEvents', function() {
