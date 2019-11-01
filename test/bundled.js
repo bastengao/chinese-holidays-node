@@ -1,4 +1,4 @@
-var Bundled = require('../src/bundled')
+var Bundled = require('../lib/bundled')
 
 var should = require('should');
 

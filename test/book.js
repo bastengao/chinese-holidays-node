@@ -1,7 +1,7 @@
 var should = require('should');
 
-var Days = require('../src/days')
-var Book = require('../src/book')
+var Days = require('../lib/days')
+var Book = require('../lib/book')
 
 var data = [
   { "name": "元旦", "range": ["2018-12-29"], "type":"workingday" },

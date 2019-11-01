@@ -1,5 +1,5 @@
-var Cache = require('../src/cache');
-var Days = require('../src/days');
+var Cache = require('../lib/cache');
+var Days = require('../lib/days');
 
 var should = require('should');
 
