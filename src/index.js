@@ -20,25 +20,25 @@ async function example() {
 
 
 const ChineseHolidays = {
-  ready: function(cb) {
+  ready(cb) {
     // priority: online data => offline data => bundled data
 
     if (_isFunction(cb)) {
-      Cache.events().then(function(events){
-        cb(new Book(events), null)
-      }).catch(function(err) {
-        cb(new Book(Bundled.events()), null)
-      })
+      Cache.events().then((events) => {
+        cb(new Book(events), null);
+      }).catch((err) => {
+        cb(new Book(Bundled.events()), null);
+      });
     } else {
-      return new Promise(function(resolve, reject){
-        Cache.events().then(function(events) {
-          resolve(new Book(events))
-        }).catch(function(err) {
-          resolve(new Book(Bundled.events()))
-        })
+      return new Promise((resolve, reject) => {
+        Cache.events().then((events) => {
+          resolve(new Book(events));
+        }).catch((err) => {
+          resolve(new Book(Bundled.events()));
+        });
       });
     }
-  }
-}
+  },
+};
 
 module.exports = ChineseHolidays;

@@ -19,11 +19,11 @@ const NewCacheDir = path.resolve(__dirname, '../cache_temp')
 // 4. swithc to new cache dir
 const Cache = {
   verbose: false,
-  events: function () {
-    return this.loadEventsFromRemote()
+  events() {
+    return this.loadEventsFromRemote();
   },
 
-  loadEventsFromRemote: function () {
+  loadEventsFromRemote() {
     const self = this
     if (!fs.existsSync(CacheDir)) {
       fs.mkdirSync(CacheDir);
@@ -33,87 +33,83 @@ const Cache = {
       fs.mkdirSync(NewCacheDir);
     }
 
-    return new Promise(function (resolve, reject) {
-      if(self.verbose) {
+    return new Promise((resolve, reject) => {
+      if (self.verbose) {
         console.log('loading data from ' + IndexUrl)
       }
 
-      request(IndexUrl, function (error, response, body) {
+      request(IndexUrl, (error, response, body) => {
         if (error) {
-          if(self.verbose) {
-            console.log('load failed: ' + error)
+          if (self.verbose) {
+            console.log('load failed: ' + error);
           }
-          reject(error)
-          return
+          reject(error);
+          return;
         }
-        let indexFile = CacheDir + '/index.json'
-        if(fs.existsSync(indexFile)) {
-          if(self.checksumFromFile(indexFile) == self.checksumFromContent(body)) {
-            console.log("same hash skip update")
-            resolve(Bundled.loadEventsFromDir(CacheDir))
+        const indexFile = CacheDir + '/index.json';
+        if (fs.existsSync(indexFile)) {
+          if (self.checksumFromFile(indexFile) === self.checksumFromContent(body)) {
+            console.log("same hash skip update");
+            resolve(Bundled.loadEventsFromDir(CacheDir));
             return;
           }
         }
         fs.writeFileSync(NewCacheDir + '/index.json', body);
 
-        let entries = JSON.parse(body)
-        entries.sort(function (a, b) {
-          return a['year'] - b['year']
-        })
+        const entries = JSON.parse(body);
+        entries.sort((a, b) => a['year'] - b['year']);
 
-        const promises = self.downloadEntries(entries)
-        Promise.all(promises).then(function (bodys) {
-          let events = []
-          bodys.forEach(function(bodyOfYear) {
+        const promises = self.downloadEntries(entries);
+        Promise.all(promises).then((bodys) => {
+          let events = [];
+          bodys.forEach((bodyOfYear) => {
             try {
-              const valuesOfYear = JSON.parse(bodyOfYear)
-              const eventsOfYear = valuesOfYear.map(function (ele) {
-                return new Days(ele.name, ele.range, ele.type);
-              })
-              events = events.concat(eventsOfYear)
-            } catch(err) {
-              reject(err)
+              const valuesOfYear = JSON.parse(bodyOfYear);
+              const eventsOfYear = valuesOfYear.map((ele) => new Days(ele.name, ele.range, ele.type));
+              events = events.concat(eventsOfYear);
+            } catch (err) {
+              reject(err);
             }
-          })
-          self.moveToCurrentCacheDir(entries)
-          resolve(events)
-        }).catch(function(err) {
-          reject(err)
-        })
-      })
-    })
+          });
+          self.moveToCurrentCacheDir(entries);
+          resolve(events);
+        }).catch((err) => {
+          reject(err);
+        });
+      });
+    });
   },
-  downloadEntries: function(entries) {
+  downloadEntries(entries) {
     const self = this;
-    return entries.map(function (entry) {
-      const url = DataEndpoint + '/' + entry['year'] + '.json'
-      if(self.verbose) {
-        console.log('loading data from ' + url)
+    return entries.map((entry) => {
+      const url = DataEndpoint + '/' + entry['year'] + '.json';
+      if (self.verbose) {
+        console.log('loading data from ' + url);
       }
-      let p = rq({ uri: url})
+      const p = rq({ uri: url });
 
-      p.then(function(body){
-        const path = NewCacheDir + '/' + entry['year'] + '.json'
-        fs.writeFileSync(path, body)
+      p.then((body) => {
+        const filename = NewCacheDir + '/' + entry['year'] + '.json';
+        fs.writeFileSync(filename, body);
       });
 
       return p;
-    })
+    });
   },
-  moveToCurrentCacheDir: function(entries) {
-    let files = ["index.json"]
-    files = files.concat(entries.map(function(e) { return e["year"] + ".json" }))
-    files.forEach(function(file) {
-      fs.copyFileSync(NewCacheDir + "/" + file, CacheDir + "/" + file)
-      fs.unlinkSync(NewCacheDir + "/" + file)
-    })
+  moveToCurrentCacheDir(entries) {
+    let files = ["index.json"];
+    files = files.concat(entries.map((e) => e["year"] + ".json" ));
+    files.forEach((file) => {
+      fs.copyFileSync(NewCacheDir + "/" + file, CacheDir + "/" + file);
+      fs.unlinkSync(NewCacheDir + "/" + file);
+    });
   },
-  checksumFromFile: function(file) {
+  checksumFromFile(file) {
     return this.checksumFromContent(fs.readFileSync(file, 'utf8'));
   },
-  checksumFromContent: function(buff) {
+  checksumFromContent(buff) {
     return crypto.createHash('sha256').update(buff).digest('hex');
-  }
-}
+  },
+};
 
 module.exports = Cache;
