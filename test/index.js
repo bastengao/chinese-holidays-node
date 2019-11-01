@@ -1,6 +1,6 @@
-var ChineseHolidays = require('../');
-var Book = require('../book')
-var Bundled = require('../bundled')
+var ChineseHolidays = require('../src');
+var Book = require('../src/book')
+var Bundled = require('../src/bundled')
 
 var should = require('should');
 

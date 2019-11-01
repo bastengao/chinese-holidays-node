@@ -1,4 +1,4 @@
-var _isFunction = require( "lodash/isFunction" )
+var _isFunction = require( "lodash/isFunction" );
 var moment = require('moment');
 var path = require('path');
 var Book = require('./book')

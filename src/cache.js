@@ -8,8 +8,8 @@ var Days = require('./days');
 
 var DataEndpoint = 'http://bastengao.coding.me/chinese-holidays-data/data';
 var IndexUrl = DataEndpoint + '/index.json';
-var CacheDir = path.resolve(__dirname, './cache')
-var NewCacheDir = path.resolve(__dirname, './cache_temp')
+var CacheDir = path.resolve(__dirname, '../cache')
+var NewCacheDir = path.resolve(__dirname, '../cache_temp')
 
 // TODO: checkUpdateInterval 检查更新周期
 
@@ -84,9 +84,10 @@ var Cache = {
     })
   },
   downloadEntries: function(entries) {
+    var self = this;
     return entries.map(function (entry) {
       var url = DataEndpoint + '/' + entry['year'] + '.json'
-      if(this.verbose) {
+      if(self.verbose) {
         console.log('loading data from ' + url)
       }
       var p = rq({ uri: url})

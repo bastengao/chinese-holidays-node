@@ -36,7 +36,7 @@ Days.prototype.days = function() {
   if(this.range.length === 1) {
     return [startDate.toDate()];
   } else if (this.range.length === 2) {
-    endDate = moment(this.range[1]);
+    var endDate = moment(this.range[1]);
     return rangeToDates(startDate, endDate);
   }
 }

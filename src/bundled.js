@@ -11,7 +11,7 @@ var Bundled = {
   },
 
   _loadEvents: function () {
-    var dataDirectory = path.resolve(__dirname, './data');
+    var dataDirectory = path.resolve(__dirname, '../data');
     return this.loadEventsFromDir(dataDirectory)
   },
 
