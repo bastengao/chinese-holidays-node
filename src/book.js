@@ -1,9 +1,4 @@
-var moment = require('moment');
-
-var Days = require('./days');
-var Bundled = require('./bundled')
-var Cache = require('./cache')
-
+const moment = require('moment');
 
 function Book(events) {
   this._events = events;
@@ -16,7 +11,7 @@ Book.prototype.all = function () {
 }
 
 Book.prototype.isHoliday = function (date) {
-  var event = this.event(date);
+  const event = this.event(date);
 
   if (!event) {
     return this.isWeekend(date);
@@ -26,7 +21,7 @@ Book.prototype.isHoliday = function (date) {
 }
 
 Book.prototype.isWorkingday = function (date) {
-  var event = this.event(date);
+  const event = this.event(date);
 
   if (!event) {
     return !this.isWeekend(date);
@@ -45,7 +40,7 @@ Book.prototype.event = function (date) {
 
 Book.prototype.book = function () {
   if (!this._book) {
-    var self = this;
+    const self = this;
     self._book = {};
 
     self.events().forEach(function (event) {
@@ -59,7 +54,7 @@ Book.prototype.book = function () {
 }
 
 Book.prototype.isWeekend = function (date) {
-  var day = moment(date).day()
+  const day = moment(date).day()
   return day === 6 || day === 0;
 }
 

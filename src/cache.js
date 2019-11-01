@@ -1,15 +1,15 @@
-var fs = require('fs');
-var path = require('path');
-var request = require('request');
-var rq = require('request-promise-native');
-var crypto = require('crypto')
-var Bundled = require('./bundled')
-var Days = require('./days');
+const fs = require('fs');
+const path = require('path');
+const request = require('request');
+const rq = require('request-promise-native');
+const crypto = require('crypto');
+const Bundled = require('./bundled');
+const Days = require('./days');
 
-var DataEndpoint = 'http://bastengao.coding.me/chinese-holidays-data/data';
-var IndexUrl = DataEndpoint + '/index.json';
-var CacheDir = path.resolve(__dirname, '../cache')
-var NewCacheDir = path.resolve(__dirname, '../cache_temp')
+const DataEndpoint = 'http://bastengao.coding.me/chinese-holidays-data/data';
+const IndexUrl = DataEndpoint + '/index.json';
+const CacheDir = path.resolve(__dirname, '../cache')
+const NewCacheDir = path.resolve(__dirname, '../cache_temp')
 
 // TODO: checkUpdateInterval 检查更新周期
 
@@ -17,14 +17,14 @@ var NewCacheDir = path.resolve(__dirname, '../cache_temp')
 // 2. down load index and data file to new cache dir
 // 3. check file syntax
 // 4. swithc to new cache dir
-var Cache = {
+const Cache = {
   verbose: false,
   events: function () {
     return this.loadEventsFromRemote()
   },
 
   loadEventsFromRemote: function () {
-    var self = this
+    const self = this
     if (!fs.existsSync(CacheDir)) {
       fs.mkdirSync(CacheDir);
     }
@@ -46,7 +46,7 @@ var Cache = {
           reject(error)
           return
         }
-        var indexFile = CacheDir + '/index.json'
+        let indexFile = CacheDir + '/index.json'
         if(fs.existsSync(indexFile)) {
           if(self.checksumFromFile(indexFile) == self.checksumFromContent(body)) {
             console.log("same hash skip update")
@@ -56,18 +56,18 @@ var Cache = {
         }
         fs.writeFileSync(NewCacheDir + '/index.json', body);
 
-        var entries = JSON.parse(body)
+        let entries = JSON.parse(body)
         entries.sort(function (a, b) {
           return a['year'] - b['year']
         })
 
-        var promises = self.downloadEntries(entries)
+        const promises = self.downloadEntries(entries)
         Promise.all(promises).then(function (bodys) {
-          var events = []
+          let events = []
           bodys.forEach(function(bodyOfYear) {
             try {
-              var valuesOfYear = JSON.parse(bodyOfYear)
-              var eventsOfYear = valuesOfYear.map(function (ele) {
+              const valuesOfYear = JSON.parse(bodyOfYear)
+              const eventsOfYear = valuesOfYear.map(function (ele) {
                 return new Days(ele.name, ele.range, ele.type);
               })
               events = events.concat(eventsOfYear)
@@ -84,16 +84,16 @@ var Cache = {
     })
   },
   downloadEntries: function(entries) {
-    var self = this;
+    const self = this;
     return entries.map(function (entry) {
-      var url = DataEndpoint + '/' + entry['year'] + '.json'
+      const url = DataEndpoint + '/' + entry['year'] + '.json'
       if(self.verbose) {
         console.log('loading data from ' + url)
       }
-      var p = rq({ uri: url})
+      let p = rq({ uri: url})
 
       p.then(function(body){
-        var path = NewCacheDir + '/' + entry['year'] + '.json'
+        const path = NewCacheDir + '/' + entry['year'] + '.json'
         fs.writeFileSync(path, body)
       });
 
@@ -101,7 +101,7 @@ var Cache = {
     })
   },
   moveToCurrentCacheDir: function(entries) {
-    var files = ["index.json"]
+    let files = ["index.json"]
     files = files.concat(entries.map(function(e) { return e["year"] + ".json" }))
     files.forEach(function(file) {
       fs.copyFileSync(NewCacheDir + "/" + file, CacheDir + "/" + file)
@@ -116,4 +116,4 @@ var Cache = {
   }
 }
 
-module.exports = Cache
+module.exports = Cache;

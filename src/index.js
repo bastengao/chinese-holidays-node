@@ -1,9 +1,7 @@
-var _isFunction = require( "lodash/isFunction" );
-var moment = require('moment');
-var path = require('path');
-var Book = require('./book')
-var Bundled = require('./bundled')
-var Cache = require('./cache')
+const _isFunction = require( "lodash/isFunction" );
+const Book = require('./book');
+const Bundled = require('./bundled');
+const Cache = require('./cache');
 
 /*
 ChineseHolidays.ready(function(book){
@@ -21,7 +19,7 @@ async function example() {
 */
 
 
-var ChineseHolidays = {
+const ChineseHolidays = {
   ready: function(cb) {
     // priority: online data => offline data => bundled data
 
