@@ -1,10 +1,10 @@
-const fs = require('fs');
-const path = require('path');
-const request = require('request');
-const rq = require('request-promise-native');
-const crypto = require('crypto');
-const Bundled = require('./bundled');
-const Days = require('./days');
+import fs from 'fs';
+import path from 'path';
+import request from 'request';
+import rq from 'request-promise-native';
+import crypto from 'crypto';
+import Bundled from './bundled';
+import Days from './days';
 
 const DataEndpoint = 'http://bastengao.coding.me/chinese-holidays-data/data';
 const IndexUrl = `${DataEndpoint}/index.json`;

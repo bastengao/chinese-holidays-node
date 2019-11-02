@@ -1,6 +1,6 @@
-const fs = require('fs');
-const path = require('path');
-const Days = require('./days');
+import fs from 'fs';
+import path from 'path';
+import Days from './days';
 
 const loadEventsFromDir = function loadEventsFromDir(dir) {
   let files = fs.readdirSync(dir);

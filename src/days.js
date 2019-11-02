@@ -1,4 +1,4 @@
-const moment = require('moment');
+import moment from 'moment';
 
 const rangeToDates = function rangeToDates(startDate, endDate) {
   const dates = [startDate.toDate()];

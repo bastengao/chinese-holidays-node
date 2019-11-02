@@ -1,7 +1,8 @@
-const _isFunction = require('lodash/isFunction');
-const Book = require('./book');
-const Bundled = require('./bundled');
-const Cache = require('./cache');
+import _isFunction from 'lodash/isFunction';
+
+import Book from './book';
+import Bundled from './bundled';
+import Cache from './cache';
 
 /*
 ChineseHolidays.ready(function(book){
