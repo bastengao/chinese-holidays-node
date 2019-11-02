@@ -1,4 +1,4 @@
-const _isFunction = require( "lodash/isFunction" );
+const _isFunction = require('lodash/isFunction');
 const Book = require('./book');
 const Bundled = require('./bundled');
 const Cache = require('./cache');

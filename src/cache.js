@@ -7,9 +7,9 @@ const Bundled = require('./bundled');
 const Days = require('./days');
 
 const DataEndpoint = 'http://bastengao.coding.me/chinese-holidays-data/data';
-const IndexUrl = DataEndpoint + '/index.json';
-const CacheDir = path.resolve(__dirname, '../cache')
-const NewCacheDir = path.resolve(__dirname, '../cache_temp')
+const IndexUrl = `${DataEndpoint}/index.json`;
+const CacheDir = path.resolve(__dirname, '../cache');
+const NewCacheDir = path.resolve(__dirname, '../cache_temp');
 
 // TODO: checkUpdateInterval 检查更新周期
 
@@ -24,7 +24,7 @@ const Cache = {
   },
 
   loadEventsFromRemote() {
-    const self = this
+    const self = this;
     if (!fs.existsSync(CacheDir)) {
       fs.mkdirSync(CacheDir);
     }
@@ -35,29 +35,29 @@ const Cache = {
 
     return new Promise((resolve, reject) => {
       if (self.verbose) {
-        console.log('loading data from ' + IndexUrl)
+        console.log(`loading data from ${IndexUrl}`);
       }
 
       request(IndexUrl, (error, response, body) => {
         if (error) {
           if (self.verbose) {
-            console.log('load failed: ' + error);
+            console.log(`load failed: ${error}`);
           }
           reject(error);
           return;
         }
-        const indexFile = CacheDir + '/index.json';
+        const indexFile = `${CacheDir}/index.json`;
         if (fs.existsSync(indexFile)) {
           if (self.checksumFromFile(indexFile) === self.checksumFromContent(body)) {
-            console.log("same hash skip update");
+            console.log('same hash skip update');
             resolve(Bundled.loadEventsFromDir(CacheDir));
             return;
           }
         }
-        fs.writeFileSync(NewCacheDir + '/index.json', body);
+        fs.writeFileSync(`${NewCacheDir}/index.json`, body);
 
         const entries = JSON.parse(body);
-        entries.sort((a, b) => a['year'] - b['year']);
+        entries.sort((a, b) => a.year - b.year);
 
         const promises = self.downloadEntries(entries);
         Promise.all(promises).then((bodys) => {
@@ -82,14 +82,14 @@ const Cache = {
   downloadEntries(entries) {
     const self = this;
     return entries.map((entry) => {
-      const url = DataEndpoint + '/' + entry['year'] + '.json';
+      const url = `${DataEndpoint}/${entry.year}.json`;
       if (self.verbose) {
-        console.log('loading data from ' + url);
+        console.log(`loading data from ${url}`);
       }
       const p = rq({ uri: url });
 
       p.then((body) => {
-        const filename = NewCacheDir + '/' + entry['year'] + '.json';
+        const filename = `${NewCacheDir}/${entry.year}.json`;
         fs.writeFileSync(filename, body);
       });
 
@@ -97,11 +97,11 @@ const Cache = {
     });
   },
   moveToCurrentCacheDir(entries) {
-    let files = ["index.json"];
-    files = files.concat(entries.map((e) => e["year"] + ".json" ));
+    let files = ['index.json'];
+    files = files.concat(entries.map((e) => `${e.year}.json`));
     files.forEach((file) => {
-      fs.copyFileSync(NewCacheDir + "/" + file, CacheDir + "/" + file);
-      fs.unlinkSync(NewCacheDir + "/" + file);
+      fs.copyFileSync(`${NewCacheDir}/${file}`, `${CacheDir}/${file}`);
+      fs.unlinkSync(`${NewCacheDir}/${file}`);
     });
   },
   checksumFromFile(file) {
