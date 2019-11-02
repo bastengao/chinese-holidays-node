@@ -1,22 +1,16 @@
-var Cache = require('../cache');
-var Days = require('../days');
+const Cache = require('../lib/cache');
+const Days = require('../lib/days');
 
-var should = require('should');
+describe('Cache', () => {
+  it('loadEvents', () => Cache.loadEventsFromRemote().should.be.fulfilled());
 
-describe('Cache', function() {
-  it('loadEvents', function() {
-    return Cache.loadEventsFromRemote().should.be.fulfilled()
-  })
-
-  it('loadEventsFromRemote', function(done) {
-    Cache.loadEventsFromRemote().then(function(events) {
-      events.should.not.be.null()
-      events[0].should.instanceOf(Days)
-      done()
-    }).catch(function(err){
-      console.log(err)
-    })
-  })
+  it('loadEventsFromRemote', (done) => {
+    Cache.loadEventsFromRemote().then((events) => {
+      events.should.not.be.null();
+      events[0].should.instanceOf(Days);
+      done();
+    }).catch((err) => console.log(err));
+  });
 
   // TODO: more test
-})
+});
