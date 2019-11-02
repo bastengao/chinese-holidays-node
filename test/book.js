@@ -49,7 +49,6 @@ describe('books', () => {
   });
 
   it('isWeekend', () => {
-    const book = new Book(events);
     should.equal(Book.isWeekend('2018-12-29'), true);
     should.equal(Book.isWeekend('2018-12-30'), true);
     should.equal(Book.isWeekend('2018-12-31'), false);

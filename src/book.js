@@ -2,7 +2,7 @@ const moment = require('moment');
 
 class Book {
   constructor(events) {
-    this._events = events;
+    this.eventsData = events;
   }
 
   all() {
@@ -30,7 +30,7 @@ class Book {
   }
 
   events() {
-    return this._events;
+    return this.eventsData;
   }
 
   event(date) {
@@ -38,18 +38,17 @@ class Book {
   }
 
   book() {
-    if (!this._book) {
-      const self = this;
-      self._book = {};
+    if (!this.bookData) {
+      this.bookData = {};
 
-      self.events().forEach((event) => {
+      this.events().forEach((event) => {
         event.days().forEach((date) => {
-          self._book[Book.key(date)] = event;
+          this.bookData[Book.key(date)] = event;
         });
       });
     }
 
-    return this._book;
+    return this.bookData;
   }
 
   static isWeekend(date) {

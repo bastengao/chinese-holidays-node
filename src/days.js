@@ -1,9 +1,9 @@
 const moment = require('moment');
 
-const rangeToDates = function (startDate, endDate) {
+const rangeToDates = function rangeToDates(startDate, endDate) {
   const dates = [startDate.toDate()];
   const start = startDate.toDate();
-  for (let i = 1; i < 100; i++) {
+  for (let i = 1; i < 100; i += 1) {
     const date = moment(start).add(i, 'days');
     if (date.isSame(endDate, 'day')) {
       dates.push(date.toDate());
