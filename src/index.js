@@ -22,22 +22,21 @@ async function example() {
 const ChineseHolidays = {
   ready(cb) {
     // priority: online data => offline data => bundled data
-
-    if (_isFunction(cb)) {
+    return new Promise((resolve) => {
       Cache.events().then((events) => {
-        cb(new Book(events), null);
-      }).catch((err) => {
-        cb(new Book(Bundled.events()), null);
+        const book = new Book(events);
+        resolve(book);
+        if (_isFunction(cb)) {
+          cb(book, null);
+        }
+      }).catch(() => {
+        const book = new Book(Bundled.events());
+        resolve(book);
+        if (_isFunction(cb)) {
+          cb(book, null);
+        }
       });
-    } else {
-      return new Promise((resolve, reject) => {
-        Cache.events().then((events) => {
-          resolve(new Book(events));
-        }).catch((err) => {
-          resolve(new Book(Bundled.events()));
-        });
-      });
-    }
+    });
   },
 };
 
