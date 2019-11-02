@@ -1,3 +1,7 @@
+# v1.1.0
+
+Change source to ES2015 syntax.
+
 # v1.0.1
 
 Fix npm pacakge files
