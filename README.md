@@ -6,13 +6,11 @@
 
     npm install chinese-holidays
 
-
 ### Usage
 
-v1.1.0 支持在线更新数据和本地离线数据两种方式。
+v1.1.0+ 支持在线更新数据和本地离线数据两种方式。
 
 v0.4.1 支持最新的 2019 年离线数据，请看 v0.4.1 [使用教程](https://github.com/bastengao/chinese-holidays-node/tree/v0.4.1)
-
 
 ```javascript
 var ChineseHolidays = require('chinese-holidays');
@@ -57,6 +55,7 @@ ChineseHolidays.ready().then(function(book) {
 
 支持在线更新[节假日数据](https://github.com/bastengao/chinese-holidays-data)，如果无法联网则使用本地打包的数据。
 
+* [支持 2020 年](http://www.gov.cn/zhengce/content/2019-11/21/content_5454164.htm)
 * [支持 2019 年](http://www.gov.cn/zhengce/content/2018-12/06/content_5346276.htm) [五一假期调整](http://www.gov.cn/zhengce/content/2019-03/22/content_5375877.htm)
 * [支持 2018 年](http://www.gov.cn/zhengce/content/2017-11/30/content_5243579.htm)
 * [支持 2017 年](http://www.gov.cn/zhengce/content/2016-12/01/content_5141603.htm)

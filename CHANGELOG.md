@@ -1,3 +1,7 @@
+# v1.2.0
+
+Support year 2020 offline data.
+
 # v1.1.0
 
 Change source to ES2015 syntax.
