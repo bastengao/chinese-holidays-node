@@ -1,6 +1,6 @@
 # v1.2.1
 
-Change to new data endpoint. Previous data endpoint is no longer avaiable.
+Change to new data endpoint. Previous data endpoint is no longer available.
 
 # v1.2.0
 
