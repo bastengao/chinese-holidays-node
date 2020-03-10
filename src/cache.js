@@ -6,7 +6,7 @@ import crypto from 'crypto';
 import Bundled from './bundled';
 import Days from './days';
 
-const DataEndpoint = 'http://bastengao.coding.me/chinese-holidays-data/data';
+const DataEndpoint = 'http://chinese-holidays-data.basten.me/data';
 const IndexUrl = `${DataEndpoint}/index.json`;
 const CacheDir = path.resolve(__dirname, '../cache');
 const NewCacheDir = path.resolve(__dirname, '../cache_temp');
