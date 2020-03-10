@@ -1,3 +1,7 @@
+# v1.2.1
+
+Change to new data endpoint. Previous data endpoint is no longer avaiable.
+
 # v1.2.0
 
 Support year 2020 offline data.
