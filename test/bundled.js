@@ -3,7 +3,7 @@ const Bundled = require('../lib/bundled');
 
 describe('Bundled', () => {
   it('loadEvents', () => {
-    should.equal(Bundled.loadEvents().length, 75);
+    should.equal(Bundled.loadEvents().length, 87);
 
     const days = Bundled.loadEvents()[0].days();
     should.equal(days.length, 3);

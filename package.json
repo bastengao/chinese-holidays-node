@@ -1,6 +1,6 @@
 {
   "name": "chinese-holidays",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Chinese holidays",
   "main": "lib/index.js",
   "files": [
@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "npx babel src -d lib",
-    "test": "npm run build && mocha"
+    "test": "npm run build && mocha --timeout 10000"
   },
   "repository": {
     "type": "git",
