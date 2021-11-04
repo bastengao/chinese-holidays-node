@@ -1,3 +1,7 @@
+# v1.4.1
+
+Fix 2022 spring festival.
+
 # v1.4.0
 
 Support year 2022 offline data.
