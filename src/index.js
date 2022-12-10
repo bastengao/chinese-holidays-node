@@ -1,4 +1,5 @@
 import _isFunction from 'lodash/isFunction';
+import util from 'util';
 
 import Book from './book';
 import Bundled from './bundled';
@@ -20,6 +21,13 @@ async function example() {
 */
 
 
+function invokeCallback(cb, book) {
+  if (_isFunction(cb)) {
+    const callbackFunc = util.deprecate(cb, 'ChineseHolidays.ready(callback) is deprecated, use ChineseHolidays.ready().then(callback) instead.', 'Deprecation API');
+    callbackFunc(book, null);
+  }
+}
+
 const ChineseHolidays = {
   ready(cb) {
     // priority: online data => offline data => bundled data
@@ -27,15 +35,11 @@ const ChineseHolidays = {
       Cache.events().then((events) => {
         const book = new Book(events);
         resolve(book);
-        if (_isFunction(cb)) {
-          cb(book, null);
-        }
+        invokeCallback(cb, book);
       }).catch(() => {
         const book = new Book(Bundled.events());
         resolve(book);
-        if (_isFunction(cb)) {
-          cb(book, null);
-        }
+        invokeCallback(cb, book);
       });
     });
   },
