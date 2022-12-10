@@ -12,6 +12,12 @@ describe('ChineseHolidays', () => {
     });
   });
 
+  it('ready-offline', () => {
+    ChineseHolidays.ready({ offline: true }).then((book) => {
+      (book).should.not.be.null();
+    });
+  });
+
   it('all', () => {
     ChineseHolidays.ready((book) => {
       book.all();
