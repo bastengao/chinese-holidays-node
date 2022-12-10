@@ -15,7 +15,7 @@ v0.4.1 支持最新的 2019 年离线数据，请看 v0.4.1 [使用教程](https
 ```javascript
 var ChineseHolidays = require('chinese-holidays');
 
-ChineseHolidays.ready(function(book, err){
+ChineseHolidays.ready().then(function(book, err){
   if err != null {
     return
   }
@@ -45,10 +45,12 @@ ChineseHolidays.ready(function(book, err){
   })
 })
 
-// Or return promise
-ChineseHolidays.ready().then(function(book) {
-  book.isHoliday(date)
-})
+
+// disable update from remote, default is false.
+const options = {
+  offline: true
+};
+ChineseHolidays.ready(options)
 ```
 
 ### Support

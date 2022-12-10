@@ -6,10 +6,6 @@ import Bundled from './bundled';
 import Cache from './cache';
 
 /*
-ChineseHolidays.ready(function(book){
-  book.isHoliday(date)
-})
-
 ChineseHolidays.ready().then(function(book){
   book.isHoliday(date)
 })
@@ -18,6 +14,10 @@ async function example() {
   var book = await ChineseHolidays.ready()
   book.isHoliday(date)
 }
+
+ChineseHolidays.ready(function(book){
+  book.isHoliday(date)
+})
 */
 
 
@@ -29,17 +29,24 @@ function invokeCallback(cb, book) {
 }
 
 const ChineseHolidays = {
-  ready(cb) {
+  ready(optionsOrCallback) {
     // priority: online data => offline data => bundled data
     return new Promise((resolve) => {
+      const options = optionsOrCallback;
+      if (options && options.offline) {
+        const book = new Book(Bundled.events());
+        resolve(book);
+        return;
+      }
+
       Cache.events().then((events) => {
         const book = new Book(events);
         resolve(book);
-        invokeCallback(cb, book);
+        invokeCallback(optionsOrCallback, book);
       }).catch(() => {
         const book = new Book(Bundled.events());
         resolve(book);
-        invokeCallback(cb, book);
+        invokeCallback(optionsOrCallback, book);
       });
     });
   },
