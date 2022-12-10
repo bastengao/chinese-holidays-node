@@ -16,6 +16,11 @@ const rangeToDates = function rangeToDates(startDate, endDate) {
   return dates;
 };
 
+
+/**
+ * @class Days
+ * @hideconstructor
+ */
 class Days {
   constructor(name, range, type) {
     this.name = name;
@@ -23,14 +28,26 @@ class Days {
     this.type = type;
   }
 
+  /**
+   * return if is holiday
+   * @returns {boolean}
+   */
   isHoliday() {
     return this.type === 'holiday';
   }
 
+  /**
+   * return if is workingday
+   * @returns {boolean}
+   */
   isWorkingday() {
     return this.type === 'workingday';
   }
 
+  /**
+   * return days
+   * @returns {Array<Date>} days
+   */
   days() {
     let startDate = null;
     startDate = moment(this.range[0]);

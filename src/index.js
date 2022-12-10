@@ -28,8 +28,28 @@ function invokeCallback(cb, book) {
   }
 }
 
-const ChineseHolidays = {
-  ready(optionsOrCallback) {
+
+/**
+ * @class ChineseHolidays
+ * @hideconstructor
+ */
+class ChineseHolidays {
+  /**
+   * @typedef {Object} options
+   * @property {boolean} [offline=false] whether to update data from remote
+   */
+
+  /**
+   * @callback bookCallback
+   * @param {Book} book
+   */
+
+  /**
+   * load events from cache or bundled data
+   * @param {(options | bookCallback)} options options or callback
+   * @returns {Promise<Book>}
+   */
+  static ready(optionsOrCallback) {
     // priority: online data => offline data => bundled data
     return new Promise((resolve) => {
       const options = optionsOrCallback;
@@ -49,7 +69,7 @@ const ChineseHolidays = {
         invokeCallback(optionsOrCallback, book);
       });
     });
-  },
-};
+  }
+}
 
 module.exports = ChineseHolidays;

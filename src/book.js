@@ -1,14 +1,27 @@
 import moment from 'moment';
 
+/**
+ * @class Book
+ * @hideconstructor
+ */
 class Book {
   constructor(events) {
     this.eventsData = events;
   }
 
+  /**
+   * return all holidays
+   * @returns {Array<Days>} all holidays
+   */
   all() {
     return this.events().filter((event) => event.isHoliday());
   }
 
+  /**
+   * check date is holiday or not
+   * @param {Date} date date
+   * @returns {boolean}
+   */
   isHoliday(date) {
     const event = this.event(date);
 
@@ -19,6 +32,11 @@ class Book {
     return event.isHoliday();
   }
 
+  /**
+   * check data is workingday or not
+   * @param {Date} date date
+   * @returns {boolean}
+   */
   isWorkingday(date) {
     const event = this.event(date);
 
@@ -29,6 +47,10 @@ class Book {
     return event.isWorkingday();
   }
 
+  /**
+   * return all events
+   * @returns {Array<Days>} all events
+   */
   events() {
     return this.eventsData;
   }
