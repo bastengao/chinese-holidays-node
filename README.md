@@ -55,6 +55,7 @@ ChineseHolidays.ready().then(function(book) {
 
 支持在线更新[节假日数据](https://github.com/bastengao/chinese-holidays-data)，如果无法联网则使用本地打包的数据。
 
+* [支持 2023 年](http://www.gov.cn/zhengce/content/2022-12/08/content_5730844.htm)
 * [支持 2022 年](http://www.gov.cn/zhengce/content/2021-10/25/content_5644835.htm)
 * [支持 2021 年](http://www.gov.cn/zhengce/content/2020-11/25/content_5564127.htm)
 * [支持 2020 年](http://www.gov.cn/zhengce/content/2019-11/21/content_5454164.htm)

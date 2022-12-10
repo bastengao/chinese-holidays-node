@@ -1,6 +1,6 @@
 {
   "name": "chinese-holidays",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "Chinese holidays",
   "main": "lib/index.js",
   "files": [
