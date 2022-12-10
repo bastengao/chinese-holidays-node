@@ -8,9 +8,7 @@
 
 ### Usage
 
-v1.1.0+ 支持在线更新数据和本地离线数据两种方式。
-
-v0.4.1 支持最新的 2019 年离线数据，请看 v0.4.1 [使用教程](https://github.com/bastengao/chinese-holidays-node/tree/v0.4.1)
+支持在线更新数据和本地离线数据两种方式。
 
 ```javascript
 var ChineseHolidays = require('chinese-holidays');
@@ -52,6 +50,10 @@ const options = {
 };
 ChineseHolidays.ready(options)
 ```
+
+### Documentation
+
+[API documentation](https://bastengao.com/chinese-holidays-node/)
 
 ### Support
 
