@@ -1,3 +1,7 @@
+# v1.6.0
+
+Support year 2024 offline data.
+
 # v1.5.0
 
 Support year 2023 offline data.
