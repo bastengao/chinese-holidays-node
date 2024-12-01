@@ -1,0 +1,57 @@
+[
+  {
+    "name": "元旦",
+    "range": ["2025-01-01"],
+    "type": "holiday"
+  },
+  {
+    "name": "春节",
+    "range": ["2025-01-26"],
+    "type": "workingday"
+  },
+  {
+    "name": "春节",
+    "range": ["2025-01-28", "2025-02-04"],
+    "type": "holiday"
+  },
+  {
+    "name": "春节",
+    "range": ["2025-02-08"],
+    "type": "workingday"
+  },
+  {
+    "name": "清明节",
+    "range": ["2025-04-04", "2025-04-06"],
+    "type": "holiday"
+  },
+  {
+    "name": "劳动节",
+    "range": ["2025-04-27"],
+    "type": "workingday"
+  },
+  {
+    "name": "劳动节",
+    "range": ["2025-05-01", "2025-05-05"],
+    "type": "holiday"
+  },
+  {
+    "name": "端午节",
+    "range": ["2025-05-31", "2025-06-02"],
+    "type": "holiday"
+  },
+  {
+    "name": "国庆节、中秋节",
+    "range": ["2025-09-28"],
+    "type": "workingday"
+  },
+  {
+    "name": "国庆节、中秋节",
+    "range": ["2025-10-01", "2025-10-08"],
+    "type": "holiday"
+  },
+  {
+    "name": "国庆节、中秋节",
+    "range": ["2025-10-11"],
+    "type": "workingday"
+  }
+]

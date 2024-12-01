@@ -10,6 +10,8 @@ const DataEndpoint = 'http://chinese-holidays-data.basten.me/data';
 const IndexUrl = `${DataEndpoint}/index.json`;
 const CacheDir = path.resolve(__dirname, '../cache');
 const NewCacheDir = path.resolve(__dirname, '../cache_temp');
+const version = '1.7.0';
+const userAgent = `chinese-holidays-node/${version}`;
 
 // TODO: checkUpdateInterval 检查更新周期
 
@@ -38,7 +40,13 @@ const Cache = {
         console.log(`loading data from ${IndexUrl}`);
       }
 
-      request(IndexUrl, (error, response, body) => {
+      const options = {
+        url: IndexUrl,
+        headers: {
+          'User-Agent': userAgent,
+        },
+      };
+      request(options, (error, response, body) => {
         if (error) {
           if (self.verbose) {
             console.log(`load failed: ${error}`);
@@ -86,7 +94,12 @@ const Cache = {
       if (self.verbose) {
         console.log(`loading data from ${url}`);
       }
-      const p = rq({ uri: url });
+      const p = rq({
+        uri: url,
+        headers: {
+          'User-Agent': userAgent,
+        },
+      });
 
       p.then((body) => {
         const filename = `${NewCacheDir}/${entry.year}.json`;
