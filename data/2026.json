@@ -1,0 +1,67 @@
+[
+  {
+    "name": "元旦",
+    "range": ["2026-01-01", "2026-01-03"],
+    "type": "holiday"
+  },
+  {
+    "name": "元旦",
+    "range": ["2026-01-04"],
+    "type": "workingday"
+  },
+  {
+    "name": "春节",
+    "range": ["2026-02-14"],
+    "type": "workingday"
+  },
+  {
+    "name": "春节",
+    "range": ["2026-02-15", "2026-02-23"],
+    "type": "holiday"
+  },
+  {
+    "name": "春节",
+    "range": ["2026-02-28"],
+    "type": "workingday"
+  },
+  {
+    "name": "清明节",
+    "range": ["2026-04-04", "2026-04-06"],
+    "type": "holiday"
+  },
+  {
+    "name": "劳动节",
+    "range": ["2026-05-01", "2026-05-05"],
+    "type": "holiday"
+  },
+  {
+    "name": "劳动节",
+    "range": ["2026-05-09"],
+    "type": "workingday"
+  },
+  {
+    "name": "端午节",
+    "range": ["2026-06-19", "2026-06-21"],
+    "type": "holiday"
+  },
+  {
+    "name": "中秋节",
+    "range": ["2026-09-25", "2026-09-27"],
+    "type": "holiday"
+  },
+  {
+    "name": "国庆节",
+    "range": ["2026-09-20"],
+    "type": "workingday"
+  },
+  {
+    "name": "国庆节",
+    "range": ["2026-10-01", "2026-10-07"],
+    "type": "holiday"
+  },
+  {
+    "name": "国庆节",
+    "range": ["2026-10-10"],
+    "type": "workingday"
+  }
+]

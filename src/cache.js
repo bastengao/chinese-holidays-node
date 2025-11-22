@@ -10,7 +10,7 @@ const DataEndpoint = 'http://chinese-holidays-data.basten.me/data';
 const IndexUrl = `${DataEndpoint}/index.json`;
 const CacheDir = path.resolve(__dirname, '../cache');
 const NewCacheDir = path.resolve(__dirname, '../cache_temp');
-const version = '1.7.0';
+const version = '1.8.0';
 const userAgent = `chinese-holidays-node/${version}`;
 
 // TODO: checkUpdateInterval 检查更新周期
